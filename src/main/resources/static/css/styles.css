@@ -1,0 +1,93 @@
+
+
+.card-body{
+    padding-top: 2rem;
+}
+
+#formulario{
+    padding-top: 2rem;
+}
+
+.tab1-first{
+    display:  flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.tab1-second ~ div{
+    display: flex;
+    gap: 12px;
+}
+
+select ,#data_nasc{
+    padding: 6px;
+    border: 1px solid #dddddd;
+    border-radius: 4px; 
+}
+
+select {
+    margin-left: 1rem;
+}
+
+.group2{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.group3{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+#ano_conclusao{
+    width: 100%;
+}
+
+.tab2{
+    margin-top: 1.5rem;
+}
+
+
+
+.group4{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.group4 select , .group3 select{
+    margin-left: 0;
+  }
+
+  .group-buttons{
+    display: flex;
+    gap: 1rem;
+  }
+
+  .opcao{
+    width: 400px;
+  }
+
+  .aba3-group{
+    display: flex;
+    margin-bottom: 2rem;
+    gap: 2rem;
+  }
+
+  #numOpcoes{
+    cursor: not-allowed;
+  }
+
+
+
+#button-icon{
+    margin-top: 6rem;
+}
+
+.nav-link{
+    size: 16px;
+}

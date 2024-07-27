@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastro de Sala</title>
+</head>
+<body>
+<h1>Cadastro de Sala</h1>
+<form th:action="@{/sala}" th:object="${sala}" method="post">
+    <label for="descricao">Descrição:</label>
+    <input type="text" th:field="*{descricao}" required /><br/>
+
+    <label for="capacidade">Capacidade:</label>
+    <input type="number" th:field="*{capacidade}" required /><br/>
+
+    <label for="instituicao">Unidade Orgânica:</label>
+    <select th:field="*{instituicao.id}" id="instituicao" name="instituicao" onchange="carregarCursos()">
+        <option value="" selected>Selecione uma UO</option>
+        <th:block th:each="instituicao : ${instituicoes}">
+            <option th:value="${instituicao.id}" th:text="${instituicao.nome}"></option>
+        </th:block>
+    </select><br/>
+
+    <label for="curso">Curso:</label>
+    <select id="curso" name="curso">
+        <option value="" disabled selected>Selecione um Curso</option>
+    </select><br/>
+
+    <button type="submit">Cadastrar</button>
+</form>
+
+<h2>Salas Cadastradas</h2>
+<ul>
+    <li th:each="sala : ${salas}">
+        <span th:text="${sala.descricao}"></span> - <span th:text="${sala.capacidade}"></span> - <span th:text="${sala.instituicao.nome}"></span>
+    </li>
+</ul>
+
+<script>
+        function carregarCursos() {
+            var instituicaoId = document.getElementById("instituicao").value;
+            var cursoSelect = document.getElementById("curso");
+            cursoSelect.innerHTML = ""; // Limpa opções anteriores
+
+            // Faz a chamada AJAX para obter os cursos
+            fetch('/cursos/' + instituicaoId)
+                .then(response => response.json())
+                .then(data => {
+                    // Adiciona as opções de curso ao select
+                    data.forEach(curso => {
+                        var option = document.createElement("option");
+                        option.value = curso.id; // ID do curso
+                        option.text = curso.descricao; // Nome do curso
+                        cursoSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Erro ao carregar cursos:', error));
+        }
+</script>
+</body>
+</html>

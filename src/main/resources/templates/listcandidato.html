@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nós Inscrições - List</title>
+</head>
+<body>
+    <h2>Candidatos Inscritos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>NIF</th>
+                <th>Curso Primeira Opção</th>
+                <th>Curso Segunda Opção</th>
+                <th>Instituição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="candidato : ${candidatos}">
+                <td th:text="${candidato.nome}"></td>
+                <td th:text="${candidato.bi}"></td>
+                <td th:text="${candidato.cursoPrimeiraOpcao.descricao}"></td>
+                <td th:text="${candidato.cursoSegundaOpcao != null ? candidato.cursoSegundaOpcao.descricao : 'N/A'}">
+                </td>
+                <td>
+                    <span th:text="${candidato.cursoPrimeiraOpcao.instituicao.nome}"></span><br />
+                    <span
+                        th:text="${candidato.cursoSegundaOpcao != null ? candidato.cursoSegundaOpcao.instituicao.nome : 'N/A'}"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
