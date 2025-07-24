@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sis.inscricao.model.Candidato;
 import com.sis.inscricao.model.Code;
@@ -26,28 +25,36 @@ public class CandidatoController {
 
     @Autowired
     private CodeService codeService;
-
-    @GetMapping("/candidato")
+    
+    @GetMapping("candidato/candidato")
     public String mostrarFormulario(Model model) {
         model.addAttribute("candidato", new Candidato());
         model.addAttribute("cursos", cursoService.listarCursos());
         model.addAttribute("candidatos", candidatoService.listarCandidatos());
         model.addAttribute("codigoInvalido", false); // Adiciona atributo para controle de erro
-        return "candidato";
+        return "candidato/candidato";
     }
 
-    @GetMapping("/listcandidato")
+    @GetMapping("candidato/listcandidato")
     public String listaCandidatos(Model model) {
         model.addAttribute("candidatos", candidatoService.listarCandidatos());
         model.addAttribute("codigoInvalido", false); // Adiciona atributo para controle de erro
-        return "listcandidato";
+        return "candidato/listcandidato";
+    }
+
+
+    @GetMapping("candidato/listhoje")
+    public String listaHoje(Model model) {
+        model.addAttribute("candidatos", candidatoService.listaHoje());
+        model.addAttribute("codigoInvalido", false); // Adiciona atributo para controle de erro
+        return "candidato/listcandidato";
     }
 
     @PostMapping("/saveCandidato")
     public String processarCandidato(Candidato candidato, Model model) {
         candidato.setData_insc(LocalDate.now());
         if (candidato.getCursoPrimeiraOpcao() == null) {
-            return "redirect:/candidato"; // Redireciona se a primeira opção não for selecionada
+            return "redirect:candidato/candidato"; // Redireciona se a primeira opção não for selecionada
         }
 
         // Verifica se o código foi fornecido e se ele é válido
@@ -64,27 +71,15 @@ public class CandidatoController {
                 model.addAttribute("codigoInvalido", true);
                 model.addAttribute("cursos", cursoService.listarCursos());
                 model.addAttribute("candidatos", candidatoService.listarCandidatos());
-                return "candidato"; // Retorna ao formulário
+                return "candidato/candidato"; // Retorna ao formulário
             }
         }
 
         candidatoService.salvarCandidato(candidato);
-        return "redirect:/candidato"; // Redireciona após salvar
+        return "redirect:candidato/candidato"; // Redireciona após salvar
     }
 
-    //Acrescimo
-     @GetMapping("/alocar")
-    public String mostrarForm(Model model) {
-        // Adicione atributos ao modelo, se necessário
-        return "alocar"; // Retornar o template HTML
-    }
-
-    @PostMapping("/alocar")
-    public String alocarCandidato(@RequestParam Long candidatoId, Model model) {
-        String resultado = candidatoService.alocarCandidato(candidatoId);
-        model.addAttribute("mensagem", resultado);
-        return "resultado"; // Retornar o template de resultado
-    }
+   
 
 
 }

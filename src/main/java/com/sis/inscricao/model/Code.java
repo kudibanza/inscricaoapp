@@ -19,7 +19,7 @@ public class Code {
 
     private int numeroDeOpcoes; // Atributo para definir o número de opções
 
-    public Code() {
+    public Code() {//Construtor
         this.ativo = true;
     } 
 

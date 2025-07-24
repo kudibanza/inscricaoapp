@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Nós Inscrições</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+             
+                <div class="sidebar-brand-text /mx-3">UniLuanda </div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item active">
+                <a class="nav-link" href="../candidato/candidato">
+                    <i class="fas fa-address-card"></i>
+                    <span id="nav-text-link">Candidatura</span>
+                </a>
+            </li>
+
+
+
+            <!-- Divider -->
+
+            <hr class="sidebar-divider d-none d-md-block">
+
+
+            <!-- Divider -->
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline" id="button-icon">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Seja Bem vindo</span>
+                                <img class="img-profile rounded-circle" src="../img/undraw_profile.svg">
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h2 class="h3 mb-0 text-gray-800">Inscrição para Exames de Acesso 
+                            <span th:text="${#dates.format(new java.util.Date(), 'yyyy')}"></span>
+                        </h2>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-12">
+
+                            <!-- Default Card Example -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Formulário de Candidatura
+                                </div>
+                                <div class="card-body">
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="aba1-tab" data-toggle="tab" href="#aba1"
+                                                role="tab" aria-controls="aba1" aria-selected="true">
+                                                Dados Pessoais</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="aba2-tab" data-toggle="tab" href="#" role="tab"
+                                                aria-controls="aba2" aria-selected="false">
+                                                Informações do Ensino Médio</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="aba3-tab" data-toggle="tab" href="#" role="tab"
+                                                aria-controls="aba3" aria-selected="false">
+                                                Escolha do Curso</a>
+                                        </li>
+                                    </ul>
+                                    <form id="formulario" action="#" th:action="@{/saveCandidato}"
+                                        th:object="${candidato}" method="post">
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="aba1" role="tabpanel"
+                                                aria-labelledby="aba1-tab">
+                                                <div class="d-flex justify-content-between tab1-first">
+                                                    <div class="form-group">
+                                                        <label for="nome">Nome Completo</label>
+                                                        <input type="text" th:field="*{nome}" class="form-control"
+                                                            id="nome" size="75%" placeholder="Digite o nome completo"
+                                                            required="true">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="bi">Bilhete de Identidade</label>
+                                                        <input type="text" th:field="*{bi}" class="form-control" id="bi"
+                                                            size="75%"
+                                                            placeholder="Digite o número do documento de Identidade"
+                                                            required="true">
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-between tab1-first">
+                                                    <div class="form-group">
+                                                        <label for="email">Email</label>
+                                                        <input type="email" th:field="*{email}" class="form-control"
+                                                            id="email" size="75%"
+                                                            placeholder="Digite o seu endereço de email">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="telefone">Telefone 1/2</label>
+                                                        <input type="text" th:field="*{telefone}" class="form-control"
+                                                            id="telefone" size="75%"
+                                                            placeholder="Exemplo: 921122312 / 951231223"
+                                                            required="true">
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-between tab1-second">
+                                                    <div class="form-group group4">
+                                                        <label for="data_nasc">Data de Nascimento </label>
+                                                        <input th:field="*{data_nasc}" type="date" id="data_nasc"
+                                                            class="form-group mb-6 col-6" />
+                                                    </div>
+                                                    <div class="form-group group4">
+                                                        <label for="genero">Género</label>
+                                                        <select th:field="*{genero}" id="genero"
+                                                            class="form-select form-select-lg">
+                                                            <option selected value="Masculino">Masculino</option>
+                                                            <option value="Feminino">Feminino</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group group4">
+                                                        <label for="nee">Necessidade Especial</label>
+                                                        <select th:field="*{necessidade}" id="nee" class="form-select">
+                                                            <option selected value="Sem Necesidade">Sem Necesidade
+                                                            </option>
+                                                            <option value="Físico-Motor">Físico-Motor</option>
+                                                            <option value="Surdo">Surdo</option>
+                                                            <option value="Mudo">Cego</option>
+                                                            <option value="Outro">Outro</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="form-group group4">
+                                                        <label for="provincia">Província em que reside:</label>
+                                                        <select th:field="*{provincia}" id="provincia" required
+                                                            class="form-select">
+                                                            <option value="Luanda" selected="selected">Luanda</option>
+                                                            <option value="Bengo">Bengo</option>
+                                                            <option value="Benguela">Benguela</option>
+                                                            <option value="Bié">Bié</option>
+                                                            <option value="Cabinda">Cabinda</option>
+                                                            <option value="Cuando Cubango">Cuando Cubango</option>
+                                                            <option value="Cuanza Norte">Cuanza Norte</option>
+                                                            <option value="Cuanza Sul">Cuanza Sul</option>
+                                                            <option value="Cunene">Cunene</option>
+                                                            <option value="Huambo">Huambo</option>
+                                                            <option value="Huíla">Huíla</option>
+                                                            <option value="Lunda Norte">Lunda Norte</option>
+                                                            <option value="Lunda Sul">Lunda Sul</option>
+                                                            <option value="Malanje">Malanje</option>
+                                                            <option value="Moxico">Moxico</option>
+                                                            <option value="Namibe">Namibe</option>
+                                                            <option value="Uíge">Uíge</option>
+                                                            <option value="Zaire">Zaire</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group group4">
+                                                        <label for="municipio">Município em que Reside:</label>
+                                                        <select th:field="*{municipio}" id="municipio" required
+                                                            class="form-select">
+                                                            <option value="Luanda" disabled>Luanda</option>
+                                                            <option value="Belas">Belas</option>
+                                                            <option value="Cacuaco">Cacuaco</option>
+                                                            <option value="Luanda">Luanda</option>
+                                                            <option value="Cazenga">Cazenga</option>
+                                                            <option value="Bengo">Bengo</option>
+                                                            <option value="Icolo e Bengo">Icolo e Bengo</option>
+                                                            <option value="Quiçama">Quiçama</option>
+                                                            <option value="Talatona">Talatona</option>
+                                                            <option value="Viana">Viana</option>
+
+                                                            <option value="Bengo" disabled>Bengo</option>
+
+                                                            <option value="Dande">Dande</option>
+                                                            <option value="Ambriz">Ambriz</option>
+                                                            <option value="Nambuangongo">Nambuangongo</option>
+                                                            <option value="Pango Aluquém">Pango Aluquém</option>
+                                                            <option value="Benguela">Benguela</option>
+                                                            <option value="Dembos">Dembos</option>
+                                                            <option value="Bula Atumba">Bula Atumba</option>
+
+                                                            <option value="Benguela" disabled>Benguela</option>
+
+                                                            <option value="Lobito">Lobito</option>
+                                                            <option value="Baía Farta">Baía Farta</option>
+                                                            <option value="Catumbela">Catumbela</option>
+                                                            <option value="Cubal">Cubal</option>
+                                                            <option value="Ganda">Ganda</option>
+                                                            <option value="Chongoroi">Chongoroi</option>
+                                                            <option value="Caimbambo">Caimbambo</option>
+                                                            <option value="Balombo">Balombo</option>
+
+                                                            <option value="Bié" disabled>Bié</option>
+
+                                                            <option value="Kuito">Kuito</option>
+                                                            <option value="Andulo">Andulo</option>
+                                                            <option value="Camacupa">Camacupa</option>
+                                                            <option value="Catabola">Catabola</option>
+                                                            <option value="Chinguar">Chinguar</option>
+                                                            <option value="Chitembo">Chitembo</option>
+                                                            <option value="Cunhinga">Cunhinga</option>
+                                                            <option value="Nharea">Nharea</option>
+
+                                                            <option value="Cabinda" disabled>Cabinda</option>
+
+                                                            <option value="Cacongo">Cacongo</option>
+                                                            <option value="Belize">Belize</option>
+                                                            <option value="Buco-Zau">Buco-Zau</option>
+
+                                                            <option value="Cuando Cubango" disabled>Cuando Cubango
+                                                            </option>
+
+                                                            <option value="Menongue">Menongue</option>
+                                                            <option value="Cuchi">Cuchi</option>
+                                                            <option value="Cuito Cuanavale">Cuito Cuanavale</option>
+                                                            <option value="Dirico">Dirico</option>
+                                                            <option value="Mavinga">Mavinga</option>
+                                                            <option value="Nancova">Nancova</option>
+
+                                                            <option value="Cuanza Norte" disabled>Cuanza Norte</option>
+
+                                                            <option value="Ndalatando">Ndalatando</option>
+                                                            <option value="Ambaca">Ambaca</option>
+                                                            <option value="Bolongongo">Bolongongo</option>
+                                                            <option value="Bula Atumba">Bula Atumba</option>
+                                                            <option value="Cambambe">Cambambe</option>
+                                                            <option value="Cazengo">Cazengo</option>
+                                                            <option value="Golungo Alto">Golungo Alto</option>
+                                                            <option value="Lucala">Lucala</option>
+
+                                                            <option value="Cuanza Sul" disabled>Cuanza Sul</option>
+
+                                                            <option value="Sumbe">Sumbe</option>
+                                                            <option value="Gabela">Gabela</option>
+                                                            <option value="Cassongue">Cassongue</option>
+                                                            <option value="Conda">Conda</option>
+                                                            <option value="Ebo">Ebo</option>
+                                                            <option value="Libolo">Libolo</option>
+                                                            <option value="Mussende">Mussende</option>
+                                                            <option value="Porto Amboim">Porto Amboim</option>
+                                                            <option value="Seles">Seles</option>
+
+                                                            <option value="Cunene" disabled>Cunene</option>
+
+                                                            <option value="Ondjiva">Ondjiva</option>
+                                                            <option value="Cahama">Cahama</option>
+                                                            <option value="Cuanhama">Cuanhama</option>
+                                                            <option value="Curoca">Curoca</option>
+                                                            <option value="Cuvelai">Cuvelai</option>
+                                                            <option value="Namacunde">Namacunde</option>
+                                                            <option value="Ombadja">Ombadja</option>
+
+                                                            <option value="Huambo" disabled>Huambo</option>
+
+                                                            <option value="Bailundo">Bailundo</option>
+                                                            <option value="Caála">Caála</option>
+                                                            <option value="Catchiungo">Catchiungo</option>
+                                                            <option value="Ecunha">Ecunha</option>
+                                                            <option value="Londuimbali">Londuimbali</option>
+                                                            <option value="Longonjo">Longonjo</option>
+                                                            <option value="Mungo">Mungo</option>
+                                                            <option value="Tchicala Tcholohanga">Tchicala Tcholohanga
+                                                            </option>
+                                                            <option value="Ucuma">Ucuma</option>
+
+                                                            <option value="Huíla" disabled>Huíla</option>
+
+                                                            <option value="Lubango">Lubango</option>
+                                                            <option value="Caconda">Caconda</option>
+                                                            <option value="Cacula">Cacula</option>
+                                                            <option value="Caluquembe">Caluquembe</option>
+                                                            <option value="Chiange">Chiange</option>
+                                                            <option value="Chicomba">Chicomba</option>
+                                                            <option value="Chibia">Chibia</option>
+                                                            <option value="Cuvango">Cuvango</option>
+                                                            <option value="Humpata">Humpata</option>
+                                                            <option value="Jamba">Jamba</option>
+                                                            <option value="Matala">Matala</option>
+                                                            <option value="Quilengues">Quilengues</option>
+                                                            <option value="Quipungo">Quipungo</option>
+
+                                                            <option value="Lunda Norte" disabled>Lunda Norte</option>
+
+                                                            <option value="Dundo">Dundo</option>
+                                                            <option value="Cambulo">Cambulo</option>
+                                                            <option value="Capenda Camulemba">Capenda Camulemba</option>
+                                                            <option value="Caungula">Caungula</option>
+                                                            <option value="Chitato">Chitato</option>
+                                                            <option value="Cuango">Cuango</option>
+                                                            <option value="Cuilo">Cuilo</option>
+                                                            <option value="Lubalo">Lubalo</option>
+                                                            <option value="Lucapa">Lucapa</option>
+                                                            <option value="Xa Muteba">Xa Muteba</option>
+
+                                                            <option value="Lunda Sul" disabled>Lunda Sul</option>
+
+                                                            <option value="Saurimo">Saurimol</option>
+                                                            <option value="Cacolo">Cacolo</option>
+                                                            <option value="Dala">Dala</option>
+                                                            <option value="Muconda">Muconda</option>
+
+                                                            <option value="Malanje" disabled>Malanje</option>
+
+                                                            <option value="Cacuso">Cacuso</option>
+                                                            <option value="Calandula">Calandula</option>
+                                                            <option value="Cambundi-Catembo">Cambundi-Catembo</option>
+                                                            <option value="Cangandala">Cangandala</option>
+                                                            <option value="Caombo">Caombo</option>
+                                                            <option value="Cuaba Nzogo">Cuaba Nzogo</option>
+                                                            <option value="Cunda-Dia-Baze">Cunda-Dia-Baze</option>
+                                                            <option value="Luquembo">Luquembo</option>
+                                                            <option value="Marimba">Marimba</option>
+                                                            <option value="Massango">Massango</option>
+                                                            <option value="Mucari">Mucari</option>
+                                                            <option value="Quela">Quela</option>
+                                                            <option value="Quirima">Quirima</option>
+
+                                                            <option value="Moxico" disabled>Moxico</option>
+
+                                                            <option value="Luena">Luena</option>
+                                                            <option value="Alto Zambeze">Alto Zambeze</option>
+                                                            <option value="Bundas">Bundas</option>
+                                                            <option value="Camanongue">Camanongue</option>
+                                                            <option value="Léua">Léua</option>
+                                                            <option value="Luau">Luau</option>
+                                                            <option value="Luchazes">Luchazes</option>
+                                                            <option value="Cameia">Cameia</option>
+
+                                                            <option value="Namibe" disabled>Namibe</option>
+
+                                                            <option value="Bibala">Bibala</option>
+                                                            <option value="Camacuio">Camacuio</option>
+                                                            <option value="Tômbwa">Tômbwa</option>
+                                                            <option value="Virei">Virei</option>
+
+                                                            <option value="Uíge" disabled>Uíge</option>
+
+                                                            <option value="Ambuila">Ambuila</option>
+                                                            <option value="Bembe">Bembe</option>
+                                                            <option value="Buengas">Buengas</option>
+                                                            <option value="Bungo">Bungo</option>
+                                                            <option value="Damba">Damba</option>
+                                                            <option value="Milunga">Milunga</option>
+                                                            <option value="Mucaba">Mucaba</option>
+                                                            <option value="Negage">Negage</option>
+                                                            <option value="Puri">Puri</option>
+                                                            <option value="Quimbele">Quimbele</option>
+                                                            <option value="Quitexe">Quitexe</option>
+                                                            <option value="Sanza Pombo">Sanza Pombo</option>
+                                                            <option value="Maquela do Zombo">Maquela do Zombo</option>
+
+                                                            <option value="Zaire" disabled>Zaire</option>
+
+                                                            <option value="Mbanza Kongo">Mbanza Kongo</option>
+                                                            <option value="Cuimba">Cuimba</option>
+                                                            <option value="Nóqui">Nóqui</option>
+                                                            <option value="Nzeto">Nzeto</option>
+                                                            <option value="Soyo">Soyo</option>
+                                                            <option value="Tomboco">Tomboco</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group group4">
+                                                        <label for="trabalha">Trabalha?</label>
+                                                        <select th:field="*{trabalha}" id="trabalha"
+                                                            class="form-select">
+                                                            <option selected value="Não">Não</option>
+                                                            <option value="Sim">Sim</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--aba 2-->
+                                            <div class="tab-pane fade" id="aba2" role="tabpanel"
+                                                aria-labelledby="aba2-tab">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="form-group">
+                                                        <label for="curso_medio">Curso do Ensino Médio</label>
+                                                        <input type="text" class="form-control" id="curso_medio"
+                                                            th:field="*{curso_medio}"
+                                                            placeholder="Digite o Curso que frequentou no ensino Médio"
+                                                            size="60%" required>
+                                                    </div>
+                                                    <div class="form-group group2">
+                                                        <label for="ano_conclusao">Ano de Conclusão do Ensino Médio</label>
+                                                        <input type="number" class="form-control" id="ano_conclusao"
+                                                            min="2000" max="2024" th:field="*{ano_conclusao}">
+                                                    </div>
+                                                    <div class="form-group group2">
+                                                        <label for="nota_medio">Média do Ensino Médio</label>
+                                                        <input type="number" class="form-control" id="nota_medio"
+                                                            min="10" max="20" th:field="*{nota_medio}">
+                                                    </div>
+
+                                                </div>
+                                                <div class="d-flex justify-content-between tab2">
+                                                    <div class="form-group group4">
+                                                        <label for="procedencia">Procedência Escolar:</label>
+                                                        <select th:field="*{procedencia}" id="procedencia"
+                                                            class="form-select">
+                                                            <option selected
+                                                                value="Escola do Ensino Técnico-Profissional">Escola do
+                                                                Ensino
+                                                                Técnico-Profissional</option>
+                                                            <option value="Escola do Ensino Secundário do II Ciclo">
+                                                                Escola do Ensino Secundário do
+                                                                II Ciclo</option>
+                                                            <option value="Escola de Formação de Professores">Escola de
+                                                                Formação de Professores
+                                                            </option>
+                                                            <option value="Outro">Outro</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group group4">
+                                                        <label for="natureza">Natureza da escola de Precedência</label>
+                                                        <select th:field="*{natureza}" id="natureza"
+                                                            class="form-select">
+                                                            <option selected value="Público">Público</option>
+                                                            <option value="Privado">Privado</option>
+                                                            <option value="Público-Privado">Público-Privado</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group group4">
+                                                        <label for="financiamento">Financiamento dos estudos no Ensino
+                                                            Médio</label>
+                                                        <select th:field="*{financiamento}" id="financiamento"
+                                                            class="form-select">
+                                                            <option selected value="Financiado por Familiares">
+                                                                Financiado por Familiares</option>
+                                                            <option value="Auto-financiamento">Auto-financiamento
+                                                            </option>
+                                                            <option value="Beneficiou de Bolsa de Estudos">Beneficiou de
+                                                                Bolsa de Estudos</option>
+                                                            <option value="Outro">Outro</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-between tab2">
+                                                    <div class="form-group group4">
+                                                        <label for="parceiro">Vem de Instituição Parceira da UniLuanda?</label>
+                                                        <select  id="parceiro" th:field="*{parceiro}"
+                                                            class="form-select" onchange="f_parceiro()">
+                                                            <option selected
+                                                                value="Não">Não</option>
+                                                                <option 
+                                                                value="Sim">Sim</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group group4" id="parceiros" style="display:none;">
+                                                        <label for="nome_parceiro">Nome da Instituição</label>
+                                                        <input type="text" th:field="*{nome_parceiro}" class="form-control" id="nome_parceiro"
+                                                        placeholder="Nome do Parceiro da UniLuanda">
+                                                    </div>
+                                                </div> 0000
+                                            </div>
+                                            <!--aba 3-->
+                                            <div class="tab-pane fade" id="aba3" role="tabpanel"
+                                                aria-labelledby="aba3-tab">
+                                                <div class="aba3-group">
+                                                    <div class="group4">
+                                                        <label for="periodo">Período</label>
+                                                        <select id="periodo" name="periodo" class="form-select">
+                                                            <option selected value="Regular">Regular (Manhã/Tarde)</option>
+                                                            <option value="Pós-Laboral">Pós-Laboral (Noite)</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="group4">
+                                                        <label for="codigo_code">Código de Opção</label>
+                                                        <input type="text" class="form-control" id="codigo_code"
+                                                            th:field="*{code.codigo}"
+                                                            placeholder="Consulte o código no Serviço de Apoio"
+                                                            oninput="fetchNumOpcoes()" required="true">
+                                                    </div>
+                                                    <div class="group4">
+                                                        <label for="numOpcoes">Número de Opções</label>
+                                                        <input type="number" min="1" max="2" class="form-control"
+                                                            id="numOpcoes" name="numOpcoes"
+                                                            placeholder="Número de opções" disabled required="true">
+                                                    </div>
+                                                </div>
+                                                <div id="cursoOpcoes" class="d-flex justify-content-between group3">
+
+                                                    <div class="form-group" id="primeiraOpcao" style="display: none;">
+                                                        <label for="cursoPrimeiraOpcao">Curso a se Inscrever</label>
+                                                        <select th:field="*{cursoPrimeiraOpcao}" required="true">
+                                                            <option value="" selected>Selecione o Curso</option>
+                                                            <option th:each="curso : ${cursos}" th:value="${curso.id}"
+                                                                th:text="${curso.descricao}"></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group" id="segundaOpcao" style="display: none;">
+                                                        <label for="cursoSegundaOpcao">Curso Segunda Opção:</label>
+                                                        <select th:field="*{cursoSegundaOpcao}">
+                                                            <option value="" selected>Selecione uma 2ª Opção</option>
+                                                            <option th:each="curso : ${cursos}" th:value="${curso.id}"
+                                                                th:text="${curso.descricao}"></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 group-buttons">
+                                            <button type="button" class="btn btn-secondary" id="btnAnterior"
+                                                onclick="prevTab()">Anterior</button>
+                                            <button type="button" class="btn btn-primary" id="btnProximo"
+                                                onclick="nextTab()">Próximo</button>
+                                            <button type="submit" class="btn btn-primary" id="btnSubmeter"
+                                                style="display: none;">Finalizar</button>  
+                                            </div>
+                                    </form>
+                                </div>
+                                  <!-- Mensagem de erro se o código for inválido -->
+    <div th:if="${codigoInvalido}" style="color: red;">
+        Código inválido! Por favor, verifique e tente novamente. <br>
+        Caso continue contacte o Técnico.
+    </div>
+    <div id="mensagemErro" style="color: red;"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; UniLuanda -  <span th:text="${#dates.format(new java.util.Date(), 'yyyy')}"></span></span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../js/demo/datatables-demo.js"></script>
+    <script>
+                function updateCourseOptions(numeroDeOpcoes) {
+            const segundaOpcao = document.getElementById('segundaOpcao');
+            const primeiraOpcao = document.getElementById('primeiraOpcao');
+            if (numeroDeOpcoes == 2) {
+                primeiraOpcao.style.display = 'block';
+                segundaOpcao.style.display = 'block';
+                codigo_code.value = "";
+            } else {
+                primeiraOpcao.style.display = 'block';
+                codigo_code.value = "";
+                segundaOpcao.style.display = 'none';
+
+            }
+        }
+
+        //Funçao para abilitar parceiro
+            function f_parceiro( ){
+                const nome_parceiro = document.getElementById('parceiros');
+                const parceiro = document.getElementById('parceiro');
+
+                if (parceiro.value=='Sim') {
+                    nome_parceiro.style.display = "block";
+                } else {
+                    nome_parceiro.style.display = 'none';
+                }
+            }
+
+        async function fetchNumOpcoes() {
+            const codigo = document.getElementById('codigo_code').value;
+            const mensagemErro = document.getElementById('mensagemErro');
+            mensagemErro.textContent = ''; // Limpa a mensagem de erro
+            const segundaOpcao = document.getElementById('segundaOpcao');
+            const primeiraOpcao = document.getElementById('primeiraOpcao');
+            if (codigo) {
+                const response = await fetch(`/code/${codigo}`);
+                if (response.ok) {
+                    const numOpcoes = await response.json();
+                    document.getElementById('numOpcoes').value = numOpcoes;
+                    if (numOpcoes == 2) {
+                        segundaOpcao.style.display = 'block';
+                        primeiraOpcao.style.display = 'block';
+                    } else {
+                        if (numOpcoes == 1)
+                        segundaOpcao.style.display = 'none';
+                        primeiraOpcao.style.display = 'block';
+                    }
+                } else {
+                    mensagemErro.textContent = await response.text(); // Mostra a mensagem de erro
+                    document.getElementById('numOpcoes').value = '';
+                    segundaOpcao.style.display = 'none';
+                        primeiraOpcao.style.display = 'none';
+                }
+            } else {
+                document.getElementById('numOpcoes').value = '';
+                segundaOpcao.style.display = 'none';
+                        primeiraOpcao.style.display = 'none';
+            }
+        }
+
+        let currentTab = 0;
+
+        function showTab(index) {
+            $('.nav-tabs .nav-link').removeClass('active');
+            $('.tab-pane').removeClass('show active');
+            $('.nav-tabs .nav-link').eq(index).addClass('active');
+            $('.tab-pane').eq(index).addClass('show active');
+
+            // Exibir ou ocultar o botão de submeter
+            if (index === 2) {
+                $('#btnSubmeter').show();
+                $('#btnProximo').hide();
+            } else {
+                $('#btnSubmeter').hide();
+                $('#btnProximo').show();
+            }
+        }
+
+        function nextTab() {
+            if (currentTab < 2) {
+                currentTab++;
+                showTab(currentTab);
+            }
+        }
+
+        function prevTab() {
+            if (currentTab > 0) {
+                currentTab--;
+                showTab(currentTab);
+            }
+        }
+
+        $('#formulario').on('submit', function (event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+          
+            // Enviar os dados do formulário usando AJAX
+            $.ajax({
+                url: '/saveCandidato', // A URL do endpoint
+                type: 'POST', // Método de envio
+                data: $(this).serialize(), // Serializa os dados do formulário
+                success: function (response) {
+                    // Se o envio for bem-sucedido, mostre o alerta
+                    alert('Formulário submetido com sucesso!');
+                    window.location.href = 'candidato'
+                },
+                error: function (xhr, status, error) {
+                    // Tratar erro, se necessário
+                    alert('Ocorreu um erro ao submeter o formulário.');
+                }
+            });
+        }); 
+
+        // Inicializa a exibição da aba
+        showTab(currentTab);
+    </script>
+
+</body>
+
+</html>

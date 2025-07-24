@@ -34,6 +34,9 @@ public class Candidato {
     private String financiamento;
     private String periodo;
     private LocalDate data_insc;
+    private boolean print;
+    private String parceiro;
+    private String nome_parceiro;
 
     @ManyToOne
     @JoinColumn(name = "curso_primeira_opcao_id")
@@ -46,6 +49,13 @@ public class Candidato {
     @ManyToOne
     @JoinColumn(name = "code_id")
     private Code code; // Novo atributo para armazenar o código
+
+    //Constuctor
+
+    public Candidato() {
+        this.print = false;
+    }
+
 
     public Code getCode() {
         return code;
@@ -222,5 +232,30 @@ public class Candidato {
     public void setCursoSegundaOpcao(Curso cursoSegundaOpcao) {
         this.cursoSegundaOpcao = cursoSegundaOpcao;
     }
+
+    public Boolean getPrint() {
+        return print;
+    }
+
+    public void setPrint(Boolean print) {
+        this.print = print;
+    }
+
+    public String getParceiro() {
+        return parceiro;
+    }
+
+    public void setParceiro(String parceiro) {
+        this.parceiro = parceiro;
+    }
+
+    public String getNome_parceiro() {
+        return nome_parceiro;
+    }
+
+    public void setNome_parceiro(String nome_parceiro) {
+        this.nome_parceiro = nome_parceiro;
+    }
+
 
 }// End

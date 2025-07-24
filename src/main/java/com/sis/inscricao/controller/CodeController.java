@@ -26,37 +26,37 @@ public class CodeController {
     @Autowired
     private CodeRepository codeRepository;
 
-    @GetMapping("/code")
+    @GetMapping("codes/code")
     public String mostrarFormulario(Model model) {
        Code code=new Code();
-       code.setCodigo(UUID.randomUUID().toString().replace("-", "").substring(0, 4).toUpperCase());
+       code.setCodigo(UUID.randomUUID().toString().replace("-", "").substring(0, 6).toUpperCase());
        code.setAtivo(true);
         model.addAttribute("code", code);
         model.addAttribute("codes", codeService.listarCodes()); // Lista de códigos ativos
-        return "code"; // Retorna o nome da view
+        return "codes/code"; // Retorna o nome da view
     }
 
     //Imprime somente os codes ativos
-    @GetMapping("/codein")
+    @GetMapping("codes/codein")
     public String codeAtivos(Model model) {
        Code code=new Code();
-       code.setCodigo(UUID.randomUUID().toString().replace("-", "").substring(0, 12).toUpperCase());
+       code.setCodigo(UUID.randomUUID().toString().replace("-", "").substring(0, 6).toUpperCase());
        code.setAtivo(true);
        List<Code> codeAtivos = codeService.findAtiveCodes();
         model.addAttribute("code", code);
         model.addAttribute("codes", codeAtivos); // Lista de códigos ativos
-        return "code"; // Retorna o nome da view
+        return "codes/code"; // Retorna o nome da view
     }
 
     @PostMapping("/code")
     public String cadastrarCodigo(@ModelAttribute Code code) {
         codeService.salvarCode(code); // Salva o código com o número de opções
-        return "redirect:/code"; // Redireciona após salvar
+        return "redirect:codes/codein"; // Redireciona após salvar
     }
 
  @GetMapping("/code/{codigo}")
     public ResponseEntity<?> getNumOpcoes(@PathVariable String codigo) {
-        Code code = codeRepository.findByCodigo(codigo);
+        Code code = codeRepository.findByCodigoAndAtivo(codigo, true);
         if (code != null) {
             return ResponseEntity.ok(code.getNumeroDeOpcoes());
         }
