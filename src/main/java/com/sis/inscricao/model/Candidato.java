@@ -37,6 +37,8 @@ public class Candidato {
     private boolean print;
     private String parceiro;
     private String nome_parceiro;
+    private String familia;
+    private String combatente;
 
     @ManyToOne
     @JoinColumn(name = "curso_primeira_opcao_id")
@@ -54,6 +56,26 @@ public class Candidato {
 
     public Candidato() {
         this.print = false;
+    }
+
+
+    public String getCombatente() {
+        return combatente;
+    }
+
+
+    public void setCombatente(String combatente) {
+        this.combatente = combatente;
+    }
+
+
+    public String getFamilia() {
+        return familia;
+    }
+
+
+    public void setFamilia(String familia) {
+        this.familia = familia;
     }
 
 

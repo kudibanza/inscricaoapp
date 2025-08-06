@@ -459,7 +459,7 @@
                                                     <div class="form-group group2">
                                                         <label for="ano_conclusao">Ano de Conclusão do Ensino Médio</label>
                                                         <input type="number" class="form-control" id="ano_conclusao"
-                                                            min="2000" max="2024" th:field="*{ano_conclusao}">
+                                                            min="2000"  th:field="*{ano_conclusao}">
                                                     </div>
                                                     <div class="form-group group2">
                                                         <label for="nota_medio">Média do Ensino Médio</label>
@@ -510,7 +510,9 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <h3>Outras Informações</h3>
                                                 <div class="d-flex justify-content-between tab2">
+                                                    
                                                     <div class="form-group group4">
                                                         <label for="parceiro">Vem de Instituição Parceira da UniLuanda?</label>
                                                         <select  id="parceiro" th:field="*{parceiro}"
@@ -526,12 +528,34 @@
                                                         <input type="text" th:field="*{nome_parceiro}" class="form-control" id="nome_parceiro"
                                                         placeholder="Nome do Parceiro da UniLuanda">
                                                     </div>
-                                                </div> 0000
+
+                                                    <div class="form-group group4">
+                                                        <label for="familia">Vive com Funcionário da UniLuanda?</label>
+                                                        <select  id="familia" th:field="*{familia}"
+                                                            class="form-select" onchange="f_parceiro()">
+                                                            <option selected
+                                                                value="Não">Não</option>
+                                                                <option 
+                                                                value="Sim">Sim</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group group4">
+                                                        <label for="combatente">É filho de Antigo Combatente?</label>
+                                                        <select  id="combatente" th:field="*{combatente}"
+                                                            class="form-select" onchange="f_parceiro()">
+                                                            <option selected
+                                                                value="Não">Não</option>
+                                                                <option 
+                                                                value="Sim">Sim</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <!--aba 3-->
                                             <div class="tab-pane fade" id="aba3" role="tabpanel"
                                                 aria-labelledby="aba3-tab">
                                                 <div class="aba3-group">
+                                                    
                                                     <div class="group4">
                                                         <label for="periodo">Período</label>
                                                         <select id="periodo" name="periodo" class="form-select">
