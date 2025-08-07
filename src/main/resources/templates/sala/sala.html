@@ -246,7 +246,7 @@
                                             <th>Descrição</th>
                                             <th>Capacidade</th>
                                             <th>Unidade Orgânica</th>
-
+                                            <th>Curso</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -255,7 +255,7 @@
                                             <th>Descrição</th>
                                             <th>Capacidade</th>
                                             <th>Unidade Orgânica</th>
-                                           
+                                            <th>Curso</th>
                                         </tr>
                                         </tr>
                                     </tfoot>
@@ -263,7 +263,8 @@
                                         <tr th:each="sala : ${salas}">
                                             <td th:text="${sala.descricao}"></td>
                                             <td th:text="${sala.capacidade}"></td>
-                                            <td th:text="${sala.instituicao.nome}"></td>
+                                            <td th:text="${sala.instituicao.sigla}"></td>
+                                            <td th:text="${sala.curso.descricao}"></td>
                                         </tr>
 
                                     </tbody>
