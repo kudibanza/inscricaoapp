@@ -36,7 +36,7 @@ public class CandidatoServiceImpl implements CandidatoService {
     }
 
      @Override
-    public List<Candidato> findCandidatoByCursoId(Long cursoId) {
+    public List<Candidato> findCandidatoByCursoId(Curso cursoId) {
         return candidatoRepository.findCandidatoByCursoId(cursoId);
     }
 

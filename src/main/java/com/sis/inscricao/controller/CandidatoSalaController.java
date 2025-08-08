@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sis.inscricao.model.Candidato;
+import com.sis.inscricao.model.Curso;
 import com.sis.inscricao.model.CandidatoSala;
 import com.sis.inscricao.model.Sala;
 import com.sis.inscricao.repository.SalaRepository;
@@ -47,8 +48,10 @@ public class CandidatoSalaController {
     public String mostrarFormulario(Model model) {
         model.addAttribute("candidatosala", new CandidatoSala());
         //model.addAttribute("candidatos", candidatoService.listarCandidatos());
-        long curso_Id=2;
-        model.addAttribute("candidatos", candidatoService.findCandidatoByCursoId(curso_Id));
+        long cursoId=2;
+           Curso curso=new Curso();
+        curso.setId(cursoId); 
+        model.addAttribute("candidatos", candidatoService.findCandidatoByCursoId(curso));
         model.addAttribute("salas", salaService.listarSalas());
         model.addAttribute("cursos", cursoService.listarCursos());
         model.addAttribute("candidatosalas", candidatosalaService.listarCandidatoSalas());
@@ -74,7 +77,10 @@ public class CandidatoSalaController {
     @GetMapping("/candidatos/{cursoId}")
     @ResponseBody
     public List<Candidato> getPorCandidatoPorCurso(@PathVariable Long cursoId) {
-        return candidatoRepository.findCandidatoByCursoId(cursoId);
+        Curso curso=new Curso();
+        curso.setId(cursoId); 
+       
+        return candidatoRepository.findCandidatoByCursoId(curso);
     } 
 
 }//end

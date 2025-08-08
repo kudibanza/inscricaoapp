@@ -207,7 +207,7 @@
                                     <div class="form-group group4">
                                         <label for="curso">Cursos:</label>
                                         <select  id="curso" name="curso"
-                                            class="select-form" onchange="carregarSalas()">
+                                            class="select-form" onchange="carregarSalas(); carregarCandidatos();">
                                             <option value="" selected>Selecione um</option>
                                             <th:block th:each="curso : ${cursos}">
                                                 <option th:value="${curso.id}" th:text="${curso.descricao}">
@@ -218,11 +218,7 @@
                                         <label for="candidato">Lista de Candidatos:</label>
                                         <select  id="candidato" name="candidato"
                                             class="select-form">
-                                            <option value="" selected>Selecione um</option>
-                                            <th:block th:each="candidato : ${candidatos}">
-                                                <option th:value="${candidato.id}" th:text="${candidato.nome}">
-                                                </option>
-                                            </th:block>
+                                              <option value="" disabled selected>Selecione um</option>
                                         </select>
                                         <br />
                                         <label for="sala">Sala Regime:</label>
@@ -243,16 +239,18 @@
                                     <thead>
                                         <tr>
                                             <th>Candidato</th>
-                                           
                                             <th>Sala</th>
+                                            <th>Curso</th>
+                                            <th>Curso 2</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                         <tr>
                                             <th>Candidato</th>
-                                          
-                                            <th>Sala</th>
+                                           <th>Sala</th>
+                                            <th>Curso 1</th>
+                                            <th>Curso 2</th>
                                         </tr>
                                         </tr>
                                     </tfoot>
@@ -260,7 +258,8 @@
                                         <tr th:each="candidatosala : ${candidatosalas}">
                                             <td th:text="${candidatosala.candidato.nome}"></td>
                                             <td th:text="${candidatosala.sala.descricao}"></td>
-                                            
+                                            <td th:text="${candidatosala.candidato.cursoPrimeiraOpcao.descricao}"></td>
+                                            <td th:text="${candidatosala.candidato.cursoSegundaOpcao != null ? candidatosala.candidato.cursoSegundaOpcao.descricao : 'N/A'}"></td>
                                         </tr>
 
                                     </tbody>
@@ -337,7 +336,7 @@
         function carregarSalas() {
             var cursoId = document.getElementById("curso").value;
             var salaSelect = document.getElementById("sala");
-            salaSelect.innerHTML = ""; // Limpa opções anteriores
+            salaSelect.innerHTML = "Selecione o Curso"; // Limpa opções anteriores
 
             // Faz a chamada AJAX para obter os cursos
             fetch('/salas/' + cursoId)
@@ -360,7 +359,7 @@
     function carregarCandidatos() {
         var cursoId = document.getElementById("curso").value;
         var candidatoSelect = document.getElementById("candidato");
-        candidatoSelect.innerHTML = ""; // Limpa opções anteriores
+        candidatoSelect.innerHTML = "Selecione o Curso"; // Limpa opções anteriores
 
         // Faz a chamada AJAX para obter os cursos
         fetch('/candidatos/' + cursoId)

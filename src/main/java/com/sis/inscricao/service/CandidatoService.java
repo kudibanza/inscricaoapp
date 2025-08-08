@@ -15,7 +15,7 @@ public interface CandidatoService {
     boolean isSalaDisponivel(Sala sala, Curso curso);
     void alocarCandidatoNaSala(Candidato candidato, Sala sala);
     List<Candidato> listaHoje();
-   List<Candidato> findCandidatoByCursoId(Long curso_Id);
+   List<Candidato> findCandidatoByCursoId(Curso curso_Id);
     
 } 
  
