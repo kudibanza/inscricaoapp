@@ -1,5 +1,6 @@
 package com.sis.inscricao.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -23,7 +24,7 @@ public class CandidatoSala {
     @JoinColumn(name = "sala_id")
     private Sala sala;
 
-    private LocalDateTime dataAlocacao;
+    private LocalDate dataAlocacao;
 
     public Long getId() {
         return id;
@@ -49,11 +50,11 @@ public class CandidatoSala {
         this.sala = sala;
     }
 
-    public LocalDateTime getDataAlocacao() {
+    public LocalDate getDataAlocacao() {
         return dataAlocacao;
     }
 
-    public void setDataAlocacao(LocalDateTime dataAlocacao) {
+    public void setDataAlocacao(LocalDate dataAlocacao) {
         this.dataAlocacao = dataAlocacao;
     }
 

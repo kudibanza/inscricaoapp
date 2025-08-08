@@ -1,7 +1,6 @@
 package com.sis.inscricao.service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +35,11 @@ public class CandidatoServiceImpl implements CandidatoService {
         return candidatoRepository.findAll();
     }
 
+     @Override
+    public List<Candidato> findCandidatoByCursoId(Long cursoId) {
+        return candidatoRepository.findCandidatoByCursoId(cursoId);
+    }
+
     @Override
     public List<Candidato> listaHoje() {
         LocalDate atual = LocalDate.now();
@@ -49,7 +53,7 @@ public class CandidatoServiceImpl implements CandidatoService {
                 .orElseThrow(() -> new RuntimeException("Candidato não encontrado"));
 
         // Verifique se já existem alocações para o candidato
-        List<CandidatoSala> alocacoesExistentes = candidatoSalaRepository.findByCandidato(candidato);
+        List<CandidatoSala> alocacoesExistentes = candidatoSalaRepository.findByCandidato(candidato); 
 
         // Verifica se o candidato já está alocado em uma sala para a primeira opção
         if (alocacoesExistentes.stream().anyMatch(alocacao
@@ -72,7 +76,7 @@ public class CandidatoServiceImpl implements CandidatoService {
             CandidatoSala candidatoSala1 = new CandidatoSala();
             candidatoSala1.setCandidato(candidato);
             candidatoSala1.setSala(salaPrimeiraOpcao);
-            candidatoSala1.setDataAlocacao(LocalDateTime.now());
+            candidatoSala1.setDataAlocacao(LocalDate.now());
             candidatoSalaRepository.save(candidatoSala1);
         }
 
@@ -81,7 +85,7 @@ public class CandidatoServiceImpl implements CandidatoService {
             CandidatoSala candidatoSala2 = new CandidatoSala();
             candidatoSala2.setCandidato(candidato);
             candidatoSala2.setSala(salaSegundaOpcao);
-            candidatoSala2.setDataAlocacao(LocalDateTime.now());
+            candidatoSala2.setDataAlocacao(LocalDate.now());
             candidatoSalaRepository.save(candidatoSala2);
         }
 
@@ -117,7 +121,7 @@ public class CandidatoServiceImpl implements CandidatoService {
         CandidatoSala candidatoSala = new CandidatoSala();
         candidatoSala.setCandidato(candidato);
         candidatoSala.setSala(sala);
-        candidatoSala.setDataAlocacao(LocalDateTime.now());
+        candidatoSala.setDataAlocacao(LocalDate.now());
         candidatoSalaRepository.save(candidatoSala);
 
     }

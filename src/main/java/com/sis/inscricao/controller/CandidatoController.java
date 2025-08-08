@@ -30,7 +30,7 @@ public class CandidatoController {
     public String mostrarFormulario(Model model) {
         model.addAttribute("candidato", new Candidato());
         model.addAttribute("cursos", cursoService.listarCursos());
-        model.addAttribute("candidatos", candidatoService.listarCandidatos());
+       // model.addAttribute("candidatos", candidatoService.listarCandidatos());
         model.addAttribute("codigoInvalido", false); // Adiciona atributo para controle de erro
         return "candidato/candidato";
     }
@@ -70,7 +70,7 @@ public class CandidatoController {
                 // Código inválido, retorna ao formulário com mensagem de erro
                 model.addAttribute("codigoInvalido", true);
                 model.addAttribute("cursos", cursoService.listarCursos());
-                model.addAttribute("candidatos", candidatoService.listarCandidatos());
+              //  model.addAttribute("candidatos", candidatoService.listarCandidatos());
                 return "candidato/candidato"; // Retorna ao formulário
             }
         }

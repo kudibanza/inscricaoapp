@@ -8,5 +8,6 @@ import com.sis.inscricao.model.Candidato;
 import com.sis.inscricao.model.CandidatoSala;
 
 public interface CandidatoSalaRepository extends JpaRepository<CandidatoSala, Long> {
+    List<CandidatoSala> findByCandidato(CandidatoSala candidatosala);
     List<CandidatoSala> findByCandidato(Candidato candidato);
 }
